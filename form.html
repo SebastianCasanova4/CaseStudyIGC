@@ -3,16 +3,56 @@
 <head>
     <meta charset="UTF-8" />
     <title>Form</title>
+    <style>
+        .submitButton{
+            display: flex;
+            justify-content: center; 
+            align-items: center;     
+            height: 100vh;           
+            margin: 0;
+            flex-direction: column;  
+            text-align: center;      
+            font-family: Arial, sans-serif;
+        }
+        body{
+            display: flex;
+            
+            align-items: center;     
+            height: 100vh;           
+            margin: 1;
+            flex-direction: column;  
+            text-align: center;      
+            font-family: Arial, sans-serif;
+        }
+    </style>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            google.script.run.withSuccessHandler(function (response) {
+                alert(response);
+            }).saveData(data);
+
+            alert("Form submitted!");
+        }
+    </script>
 </head>
 <body>
     <h1 align="center">Patient Report Form</h1>
+    <form onsubmit="handleSubmit(event)">
     <table bgcolor="black" width=100%>
         <tr bgcolor="white">
             <td >
-                Date: <input type="date" name="date" />
+                Date: <input type="date" name="date" required/>
             </td>
             <td >
-                Casuality Age: <input type="radio" id="-18" name="age" value="<18"/> <label for="-18"><18</label><input type="radio" id="+18" name="age" value=">18"/> <label for="+18">>18</label>
+                Casuality Age: <input type="radio" id="-18" name="age" value="<18"/ required> <label for="-18"><18</label><input type="radio" id="+18" name="age" value=">18"/> <label for="+18">>18</label>
             </td>
             <td >
                 Casuality Sex: <input type="radio" id="M" name="sex" value="M"/> <label for="M">M</label><input type="radio" id="F" name="sex" value="F"/> <label for="F">F</label>
@@ -946,9 +986,8 @@
             <td><input type="text" id="associatedConditions2" name="associatedConditions2" /></td>
         </tr>
     </table>
+    <input type="submit" value="Submit" style="margin-top: 15px; margin-bottom: 15px;"> <br>
+    </form> 
     
-
-
-    <input type="submit" value="Submit" />
 </body>
 </html>

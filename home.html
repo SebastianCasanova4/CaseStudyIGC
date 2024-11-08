@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Select language</title>
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 10px;
+            background-color: #09097f;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #fff;
+            border: 1px solid #000;
+            border-color: #000;
+            color: #000;
+        }
+
+        text {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            text-align: center;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script>
+        function changePage(page) {
+            document.open();   //should work fine without this
+            document.write(page);
+            document.close();  //should work fine without this
+        }
+    </script>
+</head>
+
+<body>
+    <img src="https://igcpharma.com/wp-content/uploads/2023/05/Horizontal_IGC-Pharma-Inc_logo.png">
+    <h1>Generación de Certificados Laborales</h1>
+    <text>
+        Porfavor selecciona el idioma en el que deseas generar tu certificado:
+    </text>
+    <br>
+    <container id="buttons">
+        <button onclick="google.script.run.withSuccessHandler(changePage).newPage('formulario')">Español</button>
+        <button onclick="google.script.run.withSuccessHandler(changePage).newPage('form')">English</button>
+    </container>
+</body>
+
+</html>
